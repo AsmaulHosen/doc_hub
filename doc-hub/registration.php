@@ -116,7 +116,7 @@
                                             } elseif ($user_role == 2) {
                                                 $sql2 = "INSERT INTO doctors_deatils (user_id) VALUES ('$user_id');";
                                             } elseif ($user_role == 3) {
-                                                $sql2 = "INSERT INTO vendor_deatils (user_id) VALUES ('$user_id');";
+                                                $sql2 = "INSERT INTO vendor_details (user_id) VALUES ('$user_id');";
                                             }
                                             if ($con->query($sql2) === TRUE) {
                                                 echo "<script type= 'text/javascript'>MyRegistrationSuccessFn();</script>";

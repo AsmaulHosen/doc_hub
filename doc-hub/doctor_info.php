@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-12">
                                     <div class="single-contact-box">
-                                        <div class="c-icon"><i class="fa fa-info-circle"></i></div>
+                                        <div class="c-icon"><i class="fa fa-stethoscope" aria-hidden="true"></i></div>
                                         <div class="c-text">
                                             <h4>Speciality</h4>
                                             <p>
@@ -120,11 +120,16 @@
                                             <div class="row">
                                                 <?php
                                                 foreach ($result_apnt as $row) {
+                                                    $date_start = new DateTime($row['start_time']);
+                                                    $date_end = new DateTime($row['end_time']);
                                                 ?>
                                                     <div class="col-lg-4 col-md-4 col-12">
                                                         <div class="portfolio-content">
-                                                            <h4><a href="#"><?= $row['start_time']; ?> To <?= $row['end_time']; ?></a></h4>
+                                                            <h4><?php echo $date_start->format('h:i A ') ?> To <?php echo $date_end->format('h:i A ') ?></h4>
                                                             <p><b>Fees :</b> <?= $row['fees']; ?> Taka</p>
+
+                                                            <a href="<?= $row['fees']; ?>">Book -></a>
+
                                                         </div>
                                                     </div>
                                                 <?php
@@ -148,50 +153,49 @@
 
                 <div class="contact-box-main m-top-30">
                     <div class="row">
-                        <div class="col-lg-5 col-md-5 col-12">
+                        <div class="col-lg-6 col-md-6 col-12">
                             <div class="single-contact-box">
-                                <div class="c-icon"><i class="fa fa-user"></i></div>
+                                <div class="c-icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></div>
                                 <div class="c-text">
                                     <h4>Education</h4>
-                                    <?php
-                                    if (!empty($result_edu) && $result_edu != "") {
-                                    ?>
-                                        <hr>
-                                        <table>
-                                            <thead>
+                                    <hr>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Institution Name</th>
+                                                <th>Degree</th>
+                                                <th>Passing Year</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($result_edu as $row) {
+                                                //  if($result_edu != ''){
+                                            ?>
                                                 <tr>
-                                                    <th>Institution Name</th>
-                                                    <th>Degree</th>
-                                                    <th>Passing Year</th>
+                                                    <td><?= $row['institute_name']; ?></td>
+                                                    <td><?= $row['degree']; ?></td>
+                                                    <td><?= $row['year']; ?></td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                foreach ($result_edu as $row) {
-                                                ?>
-                                                    <tr>
-                                                        <td><?= $row['institute_name']; ?></td>
-                                                        <td><?= $row['degree']; ?></td>
-                                                        <td><?= $row['year']; ?></td>
-                                                    </tr>
-                                                <?php } ?>
-                                            </tbody>
-                                        </table>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <p>No Education History Here</p>
-                                    <?php
-                                    }
-
-                                    ?>
+                                            <?php 
+                                            }
+                                            // else{
+                                        //     ?>
+                                        <!-- //     <tr>
+                                        //         <td colspan="3">No Education History</td>
+                                        //     </tr> -->
+                                           <?php
+                                        //     }
+                                        // } ?>
+                                        </tbody>
+                                    </table>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-md-5 col-12">
+                        <div class="col-lg-6 col-md-6 col-12">
                             <div class="single-contact-box">
-                                <div class="c-icon"><i class="fa fa-user"></i></div>
+                                <div class="c-icon"><i class="fa fa-medkit"></i></div>
                                 <div class="c-text">
                                     <h4>Experience</h4>
                                     <?php

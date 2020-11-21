@@ -46,6 +46,8 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
             $high_pressure = $row['high_pressure'];
             $blood_sugar = $row['blood_sugar'];
             $contact_number = $row['contact_number'];
+            $present_address = $row['present_address'];
+            $perrmanent_address = $row['perrmanent_address'];
         }
         ?>
 
@@ -204,16 +206,28 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-lg-3 col-md-3 col-12">
                                                         <div class="form-group textarea">
                                                             <span>Work Description</span>
                                                             <textarea type="textarea" name="wrok_desc" rows="3"><?php echo $wrok_desc; ?></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="col-6">
+                                                    <div class="col-lg-3 col-md-3 col-12">
                                                         <div class="form-group textarea">
                                                             <span>About Yourself</span>
                                                             <textarea type="textarea" name="about" rows="3"><?php echo $about; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-12">
+                                                        <div class="form-group textarea">
+                                                            <span>Present Address</span>
+                                                            <textarea type="textarea" name="present_address" rows="3"><?php echo $present_address; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 col-12">
+                                                        <div class="form-group textarea">
+                                                            <span>Permanent Address</span>
+                                                            <textarea type="textarea" name="perrmanent_address" rows="3"><?php echo $perrmanent_address; ?></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
