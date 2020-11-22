@@ -131,7 +131,7 @@
                                                                 <div class="portfolio-content">
                                                                     <h4><?php echo $date_start->format('h:i A ') ?> To <?php echo $date_end->format('h:i A ') ?></h4>
                                                                     <p><b>Fees :</b> <?= $row['fees']; ?> Taka</p>
-                                                                    <a href="<?= $row['fees']; ?>">Book -></a>
+                                                                    <a class="btn btn-outline-dark btn-block" href="appoinment_info.php?appointment_id=<?= $row['appointment_id'] ?>"> Book Here</a>
                                                                 </div>
                                                             </div>
                                                         <?php
