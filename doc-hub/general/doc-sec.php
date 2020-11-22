@@ -26,12 +26,12 @@ $con = connect();
 							<?php
 							}
 							?>
-							<div class="icon-bg"><a href="doctor_info.php?user_id=<?= $row['user_id'] ?>" ><i class="fa fa-info-circle"></i></a></div>
+							<div class="icon-bg"><a href="doctor_info.php?user_id=<?= $row['user_id'] ?>"><i class="fa fa-info-circle"></i></a></div>
 						</div>
 						<div class="service-content">
-							<h4><a href="service-business.html"><?= $row['first_name'] ?> <?= $row['last_name'] ?></a></h4>
+							<h4><a href="#"><?= $row['first_name'] ?> <?= $row['last_name'] ?></a></h4>
 							<p><?php echo substr($row['about'], 0, 90); ?> ...</p>
-							<!-- <a class="btn" href="service-business.html"><i class="fa fa-arrow-circle-o-right"></i>View Service</a> -->
+							<a class="btn" href="doctor_info.php?user_id=<?= $row['user_id'] ?>"><i class="fa fa-arrow-circle-o-right"></i>View More</a>
 						</div>
 					</div>
 					<!--/ End Single Service -->
@@ -47,13 +47,13 @@ $con = connect();
 		<div class="row">
 			<div class="col-lg-9 col-12">
 				<div class="call-inner">
-					<h2>Brand Products &amp; Creativity is our Fashion</h2>
-					<p>ehicula maximus velit. Morbi non tincidunt purus, a hendrerit nisi. Vivamus elementum</p>
+					<h2>To More Doctors & Their World-class Treatment</h2>
+					<p><i>" Health is our greatest treasure and with incredible specialists. We all know that there is a better chance for the healthier population."</i></p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-12">
 				<div class="button">
-					<a href="portfolio.html" class="bizwheel-btn">Our Portfolio</a>
+					<a href="doctor_all.php" class="bizwheel-btn">Our Doctor's</a>
 				</div>
 			</div>
 		</div>

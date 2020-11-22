@@ -30,7 +30,6 @@
 		<!-- Services -->
 		<?php include_once 'general/services.php'; ?>
 		<!--/ End Services -->
-
 		<!-- Footer -->
 		<?php include_once 'includes/footer.php'; ?>
 		<!--/End Footer -->

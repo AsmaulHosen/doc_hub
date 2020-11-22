@@ -56,7 +56,7 @@
 													<!-- Naviagiton -->
 													<ul id="nav" class="nav main-menu menu navbar-nav">
 														<li><a href="index.php">Home</a></li>
-														<li><a href="services.html">Our Services</a></li>
+														<li><a href="doctor_all.php">Our Doctor's</a></li>
 														<li><a href="about.php">About Us</a></li>
 														<li><a href="contact.php">Contact Us</a></li>
 

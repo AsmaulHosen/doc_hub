@@ -116,26 +116,41 @@
                                     <div class="single-contact-box">
                                         <div class="c-text"><br>
                                             <h4>Appointment</h4>
-                                            <hr>
-                                            <div class="row">
-                                                <?php
-                                                foreach ($result_apnt as $row) {
-                                                    $date_start = new DateTime($row['start_time']);
-                                                    $date_end = new DateTime($row['end_time']);
-                                                ?>
-                                                    <div class="col-lg-4 col-md-4 col-12">
-                                                        <div class="portfolio-content">
-                                                            <h4><?php echo $date_start->format('h:i A ') ?> To <?php echo $date_end->format('h:i A ') ?></h4>
-                                                            <p><b>Fees :</b> <?= $row['fees']; ?> Taka</p>
-
-                                                            <a href="<?= $row['fees']; ?>">Book -></a>
-
-                                                        </div>
+                                            <?php
+                                            if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+                                                if ($_SESSION['user_role'] == 1) {
+                                            ?>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <?php
+                                                        foreach ($result_apnt as $row) {
+                                                            $date_start = new DateTime($row['start_time']);
+                                                            $date_end = new DateTime($row['end_time']);
+                                                        ?>
+                                                            <div class="col-lg-4 col-md-4 col-12">
+                                                                <div class="portfolio-content">
+                                                                    <h4><?php echo $date_start->format('h:i A ') ?> To <?php echo $date_end->format('h:i A ') ?></h4>
+                                                                    <p><b>Fees :</b> <?= $row['fees']; ?> Taka</p>
+                                                                    <a href="<?= $row['fees']; ?>">Book -></a>
+                                                                </div>
+                                                            </div>
+                                                        <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 <?php
-                                                }
+                                                } else {
                                                 ?>
-                                            </div>
+                                                    <p class="text-danger">Please login as a Patient to Book a Doctor Appointment</p>
+                                                <?php
+                                                }
+                                            } else {
+                                                ?>
+                                                <p class="text-danger">Please login as a Patient to Book a Doctor Appointment</p>
+                                            <?php
+                                            }
+
+                                            ?>
 
 
 
@@ -177,16 +192,18 @@
                                                     <td><?= $row['degree']; ?></td>
                                                     <td><?= $row['year']; ?></td>
                                                 </tr>
-                                            <?php 
+                                            <?php
                                             }
                                             // else{
-                                        //     ?>
-                                        <!-- //     <tr>
+                                            //     
+                                            ?>
+                                            <!-- //     <tr>
                                         //         <td colspan="3">No Education History</td>
                                         //     </tr> -->
-                                           <?php
-                                        //     }
-                                        // } ?>
+                                            <?php
+                                            //     }
+                                            // } 
+                                            ?>
                                         </tbody>
                                     </table>
 
