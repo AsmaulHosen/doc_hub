@@ -15,7 +15,7 @@
                     showConfirmButton: false,
                 },
                 window.load = function() {
-                    window.location = '../patient_booking.php';
+                    window.location = '../my_appoinment.php';
                 });
         }
 
@@ -65,9 +65,9 @@ if ($_POST) {
     $checkres = mysqli_query($con, $checksql);
     $checkdata = mysqli_fetch_array($checkres, MYSQLI_NUM);
     // echo $checkdata;exit;
-    if($checkdata[0] > 1) {
+    if ($checkdata[0] > 1) {
         echo "<script type= 'text/javascript'>MyCheckFn();</script>";
-    }else{
+    } else {
         $sql = "INSERT INTO `appointment_book` ( `appoinment_book_id`, `patient_id`, `doctors_id`, `date`, `start_time`, `end_time`, `fees`,`payment_method`,`paymeny_desc`) 
         VALUES ('$appoinment_book_id', '$patient_id', '$doctors_id', '$date', '$start_time', '$end_time', '$fees', '$payment_method', '$paymeny_desc');";
 

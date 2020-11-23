@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2020 at 01:10 PM
+-- Generation Time: Nov 23, 2020 at 07:18 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `doc_hub`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `appointment_book`
+--
+
+CREATE TABLE `appointment_book` (
+  `appoinment_book_id` varchar(30) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `doctors_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `fees` float(10,2) NOT NULL,
+  `payment_method` int(11) NOT NULL COMMENT '0 = bkash, 1 = Rocket, 2= Debit Card, 3 = Master Card ',
+  `paymeny_desc` varchar(200) NOT NULL,
+  `status` int(11) DEFAULT 0 COMMENT '0=created,1=finish,2= Reshedule'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `appointment_book`
+--
+
+INSERT INTO `appointment_book` (`appoinment_book_id`, `patient_id`, `doctors_id`, `date`, `start_time`, `end_time`, `fees`, `payment_method`, `paymeny_desc`, `status`) VALUES
+('DoH A-6142', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 0, 'bdf', 0),
+('DoH A-7601', 1, 1, '2020-11-30', '10:20:00', '10:40:00', 300.00, 3, 'ghf', 0),
+('DoH A-8368', 1, 1, '2020-11-26', '10:20:00', '10:40:00', 300.00, 1, 'qsdd', 0),
+('DoH A-9351', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 1, '24wedwe', 0);
 
 -- --------------------------------------------------------
 
@@ -245,6 +274,14 @@ INSERT INTO `vendor_details` (`vendor_id`, `user_id`, `vendor_name`, `address`, 
 --
 
 --
+-- Indexes for table `appointment_book`
+--
+ALTER TABLE `appointment_book`
+  ADD PRIMARY KEY (`appoinment_book_id`),
+  ADD KEY `patient_id` (`patient_id`),
+  ADD KEY `doctors_id` (`doctors_id`);
+
+--
 -- Indexes for table `appointment_slot`
 --
 ALTER TABLE `appointment_slot`
@@ -361,6 +398,13 @@ ALTER TABLE `vendor_details`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `appointment_book`
+--
+ALTER TABLE `appointment_book`
+  ADD CONSTRAINT `appointment_book_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient_details` (`patient_id`),
+  ADD CONSTRAINT `appointment_book_ibfk_2` FOREIGN KEY (`doctors_id`) REFERENCES `doctors_deatils` (`doctors_id`);
 
 --
 -- Constraints for table `appointment_slot`

@@ -55,9 +55,16 @@
 												<div class="menu-home-menu-container">
 													<!-- Naviagiton -->
 													<ul id="nav" class="nav main-menu menu navbar-nav">
-														<li><a href="index.php">Home</a></li>
+														<!-- <li><a href="index.php">Home</a></li> -->
 														<li><a href="doctor_all.php">Our Doctor's</a></li>
 														<li><a href="vendor_all.php">Our Vendor's</a></li>
+														<?php
+														if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+															if ($_SESSION['user_role'] == 1) {
+														?>
+																<li><a href="my_appoinment.php">My Appoinment</a></li>
+														<?php }
+														} ?>
 														<li><a href="about.php">About Us</a></li>
 														<li><a href="contact.php">Contact Us</a></li>
 
