@@ -48,33 +48,36 @@
 
 </header>
 <?php
-
+include_once '../database/dbCon.php';
+$con = connect();
 if ($_POST) {
-    $appointment_id = $_POST['appointment_id'];
-    echo $appointment_id;exit;
+    $appoinment_book_id  = $_POST['appointment_id'];
+    $patient_id = $_POST['patient_id'];
+    $doctors_id = $_POST['doctors_id'];
+    $date = $_POST['date'];
+    $start_time  = $_POST['start_time'];
+    $end_time  = $_POST['end_time'];
+    $fees = $_POST['fees'];
+    $payment_method  = $_POST['payment_method'];
+    $paymeny_desc  = $_POST['paymeny_desc'];
 
+    $checksql = "SELECT * FROM `appointment_book` WHERE patient_id = '$patient_id' AND date = '$date' AND start_time  = '$start_time'";
+    $checkres = mysqli_query($con, $checksql);
+    $checkdata = mysqli_fetch_array($checkres, MYSQLI_NUM);
+    // echo $checkdata;exit;
+    if($checkdata[0] > 1) {
+        echo "<script type= 'text/javascript'>MyCheckFn();</script>";
+    }else{
+        $sql = "INSERT INTO `appointment_book` ( `appoinment_book_id`, `patient_id`, `doctors_id`, `date`, `start_time`, `end_time`, `fees`,`payment_method`,`paymeny_desc`) 
+        VALUES ('$appoinment_book_id', '$patient_id', '$doctors_id', '$date', '$start_time', '$end_time', '$fees', '$payment_method', '$paymeny_desc');";
+
+        if ($con->query($sql) === TRUE) {
+            echo "<script type= 'text/javascript'>MySuccessFn();</script>";
+        } else {
+            echo "<script type= 'text/javascript'>MyWarningFn();</script>";
+        }
+    }
 }
 
 
-// session_start();
-// $appointment_id = $_GET['appointment_id'];
-// function generateRandomString()
-// {
-//     $characters = '0123456789';
-//     $length = 4;
-//     $charactersLength = strlen($characters);
-//     $randomString = 'DH-APN-';
-//     for ($i = 0; $i < $length; $i++) {
-//         $randomString .= $characters[rand(0, $charactersLength - 1)];
-//     }
-//     return $randomString;
-// }
-// $appointment_number = generateRandomString();
-// $user_id = $_SESSION['user_id'];
-// echo $appointment_id;
-// echo "<br>";
-// echo $appointment_number;
-// echo "<br>";
-// echo $user_id;
-// exit;
 ?>
