@@ -36,7 +36,7 @@
             swal({
                     title: "Already Book this Doctors Appoinment",
                     text: "Invalid Attempt",
-                    type: "danger",
+                    type: "error",
                     timer: 3000,
                     showConfirmButton: false,
                 },
@@ -61,11 +61,11 @@ if ($_POST) {
     $payment_method  = $_POST['payment_method'];
     $paymeny_desc  = $_POST['paymeny_desc'];
 
-    $checksql = "SELECT * FROM `appointment_book` WHERE patient_id = '$patient_id' AND date = '$date' AND start_time  = '$start_time'";
+    $checksql = "SELECT * FROM `appointment_book` WHERE date = '$date' AND start_time  = '$start_time'";
     $checkres = mysqli_query($con, $checksql);
     $checkdata = mysqli_fetch_array($checkres, MYSQLI_NUM);
-    // echo $checkdata;exit;
-    if ($checkdata[0] > 1) {
+
+    if ($checkres->num_rows > 0) {
         echo "<script type= 'text/javascript'>MyCheckFn();</script>";
     } else {
         $sql = "INSERT INTO `appointment_book` ( `appoinment_book_id`, `patient_id`, `doctors_id`, `date`, `start_time`, `end_time`, `fees`,`payment_method`,`paymeny_desc`) 

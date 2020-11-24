@@ -47,7 +47,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                     <div class="col-lg-2 col-md-2col-12">
                         <div class="single-f-news">
                             <div class="post-thumb">
-                                <?php if ($image) {
+                                <?php if (isset($image)) {
                                 ?>
                                     <a href="#"><img src="img/doctors/<?php echo $image; ?>" alt="#"></a><br>
                                 <?php
@@ -79,7 +79,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                         <div class="contact-form-area">
 
 
-                                            <form action="doctors/updateProfile.php" method="post" role="form" style="display: block;">
+                                            <form action="doctors/updateProfile.php" method="post" role="form" style="display: block;" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <input type="hidden" value="<?php echo $user_id; ?>" name="user_id">
                                                     <input type="hidden" value="<?php echo $doctors_id; ?>" name="doctors_id">
@@ -115,6 +115,12 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                                         <div class="form-group textarea">
                                                             <span>About Yourself</span>
                                                             <textarea type="textarea" name="about" rows="3"><?php echo $about; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group textarea">
+                                                            <span>Image</span>
+                                                            <input type="file" name="image" required>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">

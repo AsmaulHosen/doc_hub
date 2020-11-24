@@ -48,7 +48,7 @@
             swal({
                     title: "Invalid Attemt",
                     text: "",
-                    type: "danger",
+                    type: "error",
                     timer: 1900,
                     showConfirmButton: false,
                 },

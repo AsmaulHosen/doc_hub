@@ -203,7 +203,7 @@ $date_end = new DateTime($row['end_time']);
 
             <tr class="details">
                 <td>
-                    <?php echo strip_tags($prescription_desc); ?>
+                    <?php echo htmlspecialchars_decode($prescription_desc); ?>
                 </td>
 
                 <td>

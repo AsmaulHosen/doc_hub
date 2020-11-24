@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2020 at 07:18 PM
+-- Generation Time: Nov 24, 2020 at 06:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -45,10 +45,10 @@ CREATE TABLE `appointment_book` (
 --
 
 INSERT INTO `appointment_book` (`appoinment_book_id`, `patient_id`, `doctors_id`, `date`, `start_time`, `end_time`, `fees`, `payment_method`, `paymeny_desc`, `status`) VALUES
-('DoH A-6142', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 0, 'bdf', 0),
-('DoH A-7601', 1, 1, '2020-11-30', '10:20:00', '10:40:00', 300.00, 3, 'ghf', 0),
-('DoH A-8368', 1, 1, '2020-11-26', '10:20:00', '10:40:00', 300.00, 1, 'qsdd', 0),
-('DoH A-9351', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 1, '24wedwe', 0);
+('DoH-A-6142', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 0, 'bdf', 1),
+('DoH-A-7601', 1, 1, '2020-11-30', '10:20:00', '10:40:00', 300.00, 3, 'ghf', 0),
+('DoH-A-8368', 1, 1, '2020-11-26', '10:20:00', '10:40:00', 300.00, 1, 'qsdd', 0),
+('DoH-A-9351', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 1, '24wedwe', 0);
 
 -- --------------------------------------------------------
 
@@ -201,6 +201,31 @@ INSERT INTO `patient_details` (`patient_id`, `user_id`, `gender`, `contact_numbe
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `prescription_details`
+--
+
+CREATE TABLE `prescription_details` (
+  `prescription_id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `doctors_id` int(11) NOT NULL,
+  `appoinment_book_id` varchar(30) NOT NULL,
+  `start_time` time NOT NULL,
+  `end_time` time NOT NULL,
+  `date` date DEFAULT current_timestamp(),
+  `prescription_desc` text NOT NULL,
+  `special_note` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `prescription_details`
+--
+
+INSERT INTO `prescription_details` (`prescription_id`, `patient_id`, `doctors_id`, `appoinment_book_id`, `start_time`, `end_time`, `date`, `prescription_desc`, `special_note`) VALUES
+(4, 1, 1, 'DoH-A-6142', '10:10:00', '10:15:00', '2020-11-24', '&lt;h1&gt;this is teting&lt;span style=&quot;font-family: &amp;quot;Impact&amp;quot;;&quot;&gt;﻿&lt;/span&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;final test&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `speciality`
 --
 
@@ -324,6 +349,15 @@ ALTER TABLE `patient_details`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indexes for table `prescription_details`
+--
+ALTER TABLE `prescription_details`
+  ADD PRIMARY KEY (`prescription_id`),
+  ADD KEY `patient_id` (`patient_id`),
+  ADD KEY `doctors_id` (`doctors_id`),
+  ADD KEY `appoinment_book_id` (`appoinment_book_id`);
+
+--
 -- Indexes for table `speciality`
 --
 ALTER TABLE `speciality`
@@ -384,6 +418,12 @@ ALTER TABLE `patient_details`
   MODIFY `patient_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `prescription_details`
+--
+ALTER TABLE `prescription_details`
+  MODIFY `prescription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `speciality`
 --
 ALTER TABLE `speciality`
@@ -441,6 +481,14 @@ ALTER TABLE `medical_report_history`
 --
 ALTER TABLE `patient_details`
   ADD CONSTRAINT `patient_details_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `prescription_details`
+--
+ALTER TABLE `prescription_details`
+  ADD CONSTRAINT `prescription_details_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient_details` (`patient_id`),
+  ADD CONSTRAINT `prescription_details_ibfk_2` FOREIGN KEY (`doctors_id`) REFERENCES `doctors_deatils` (`doctors_id`),
+  ADD CONSTRAINT `prescription_details_ibfk_3` FOREIGN KEY (`appoinment_book_id`) REFERENCES `appointment_book` (`appoinment_book_id`);
 
 --
 -- Constraints for table `speciality`
