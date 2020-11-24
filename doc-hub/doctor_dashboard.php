@@ -61,7 +61,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
 
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div class="col-lg-10 col-md-10 col-12">
                         <section class="services section-bg ">
                             <div class="container">
                                 <div class="row">
@@ -83,25 +83,25 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                                 <div class="row">
                                                     <input type="hidden" value="<?php echo $user_id; ?>" name="user_id">
                                                     <input type="hidden" value="<?php echo $doctors_id; ?>" name="doctors_id">
-                                                    <div class="col-lg-6 col-md-6 col-12">
+                                                    <div class="col-lg-3 col-md-3 col-12">
                                                         <div class="form-group">
                                                             <span>First Name</span>
                                                             <input type="text" name="first_name" value="<?php echo $first_name; ?>" placeholder="Please Type Your Email Address" required>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6 col-12">
+                                                    <div class="col-lg-3 col-md-3 col-12">
                                                         <div class="form-group">
                                                             <span>Last Name</span>
                                                             <input type="text" name="last_name" value="<?php echo $last_name; ?>" placeholder="Please Type Your Password" required>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6 col-12">
+                                                    <div class="col-lg-3 col-md-3 col-12">
                                                         <div class="form-group">
                                                             <span>Contact No.</span>
                                                             <input type="number" name="contact_number" value="<?php echo $contact_number; ?>" placeholder="Please Type Your Password" required>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-6 col-md-6 col-12">
+                                                    <div class="col-lg-3 col-md-3 col-12">
                                                         <div class="form-group">
                                                             <span>Gender</span>
                                                             <select id="gender" name="gender" class="form-control" required>
@@ -130,9 +130,6 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                 </div>
                             </div>
                         </section>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-12">
-                        <h1>Chart Section</h1>
                     </div>
                 </div>
             </div>

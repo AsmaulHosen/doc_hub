@@ -15,19 +15,22 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, .15);
             font-size: 16px;
             line-height: 24px;
-            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            /* font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; */
             color: #555;
+            border: 1px solid #2e2751;
         }
 
         .invoice-box table {
             width: 100%;
             line-height: inherit;
             text-align: left;
+            
         }
 
         .invoice-box table td {
             padding: 5px;
             vertical-align: top;
+            
         }
 
         .invoice-box table tr td:nth-child(2) {
@@ -49,7 +52,8 @@
         }
 
         .invoice-box table tr.heading td {
-            background: #eee;
+            background: #2e2751;
+            color: azure;
             border-bottom: 1px solid #ddd;
             font-weight: bold;
         }
@@ -187,7 +191,7 @@ $date_end = new DateTime($row['end_time']);
                 </td>
             </tr>
 
-            <tr class="heading">
+            <tr class="heading" style="background-color:antiquewhite;">
                 <td>
                     Prescription Details
                 </td>

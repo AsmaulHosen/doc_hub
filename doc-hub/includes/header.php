@@ -72,6 +72,7 @@
 																<li><a href="my_appoinment_list.php">My List</a></li>
 														<?php }
 														} ?>
+														
 														<!-- <li><a href="about.php">About Us</a></li>
 														<li><a href="contact.php">Contact Us</a></li> -->
 
@@ -100,7 +101,7 @@
 												<?php
 												} elseif ($_SESSION['user_role'] == 3) {
 												?>
-													<li><a href="vendor_dashboard.php" title="My Dashboard"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+													<li><a href="vendor_dashboard.php" title="My Dashboard"><i class="fa fa-hospital-o" aria-hidden="true"></i></a></li>
 													<li><a onclick="MyLogoutFn()" title="Logout Here"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 												<?php
 												}

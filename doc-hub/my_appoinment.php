@@ -77,7 +77,7 @@
                                                     <td>
                                                         <p class="text-success">Finish</p>
                                                     </td>
-                                                    <td><a title="My Prescriptions" href="prescription_print.php?appoinment_book_id=<?= $row['appoinment_book_id'] ?>" class="btn btn-sm btn-outline-warning btn-block" href=""><i class="fa fa-print" aria-hidden="true"></i></a></td>
+                                                    <td><a target="_blank" title="My Prescriptions" href="prescription_print.php?appoinment_book_id=<?= $row['appoinment_book_id'] ?>" class="btn btn-sm btn-outline-warning btn-block" href=""><i class="fa fa-print" aria-hidden="true"></i></a></td>
                                                 <?php
                                                 } elseif ($row['status'] == 0) {
                                                 ?>
