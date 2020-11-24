@@ -35,7 +35,7 @@ function generateRandomString()
     $characters = '0123456789';
     $length = 4;
     $charactersLength = strlen($characters);
-    $randomString = 'DoH A-';
+    $randomString = 'DoH-A-';
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }

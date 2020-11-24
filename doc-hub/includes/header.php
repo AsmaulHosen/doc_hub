@@ -55,7 +55,7 @@
 												<div class="menu-home-menu-container">
 													<!-- Naviagiton -->
 													<ul id="nav" class="nav main-menu menu navbar-nav">
-														<!-- <li><a href="index.php">Home</a></li> -->
+														<li><a href="index.php">Home</a></li>
 														<li><a href="doctor_all.php">Our Doctor's</a></li>
 														<li><a href="vendor_all.php">Our Vendor's</a></li>
 														<?php
@@ -65,8 +65,15 @@
 																<li><a href="my_appoinment.php">My Appoinment</a></li>
 														<?php }
 														} ?>
-														<li><a href="about.php">About Us</a></li>
-														<li><a href="contact.php">Contact Us</a></li>
+														<?php
+														if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+															if ($_SESSION['user_role'] == 2) {
+														?>
+																<li><a href="my_appoinment_list.php">My List</a></li>
+														<?php }
+														} ?>
+														<!-- <li><a href="about.php">About Us</a></li>
+														<li><a href="contact.php">Contact Us</a></li> -->
 
 													</ul>
 													<!--/ End Naviagiton -->
@@ -88,7 +95,7 @@
 												<?php
 												} elseif ($_SESSION['user_role'] == 2) {
 												?>
-													<li><a href="doctor_dashboard.php" title="My Dashboard"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+													<li><a href="doctor_dashboard.php" title="My Dashboard"><i class="fa fa-user-md" aria-hidden="true"></i></a></li>
 													<li><a onclick="MyLogoutFn()" title="Logout Here"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
 												<?php
 												} elseif ($_SESSION['user_role'] == 3) {

@@ -20,16 +20,18 @@
         <!--/ End Header -->
         <?php
         $user_id = $_SESSION['user_id'];
+        $today = date("Y-m-d");
         include_once 'database/dbCon.php';
         $con = connect();
-        $sql_pat = "SELECT * FROM users,patient_details WHERE users.user_id = patient_details.user_id AND users.user_id = $user_id;";
+        $sql_pat = "SELECT * FROM users,doctors_deatils WHERE users.user_id = doctors_deatils.user_id AND users.user_id = $user_id;";
         $result_pat = $con->query($sql_pat);
         foreach ($result_pat as $row_pat) {
-            $patient_id  = $row_pat['patient_id'];
+            $doctors_id  = $row_pat['doctors_id'];
         }
-        $sql = "SELECT appointment_book.*,users.first_name,users.last_name FROM appointment_book,doctors_deatils ,users
-        WHERE appointment_book.doctors_id = doctors_deatils.doctors_id AND doctors_deatils.user_id = users.user_id
-        AND appointment_book.patient_id = $patient_id ORDER BY `appointment_book`.`date` DESC";
+        $sql = "SELECT appointment_book.*,users.first_name,users.last_name FROM appointment_book,patient_details ,users
+        WHERE appointment_book.patient_id = patient_details.patient_id AND patient_details.user_id = users.user_id
+        AND appointment_book.doctors_id = $doctors_id AND appointment_book.date ='$today'
+        ORDER BY `appointment_book`.`date` DESC";
         $result = $con->query($sql);
         ?>
         <section class="about-us section-space">
@@ -38,14 +40,14 @@
                     <div class="col-lg-12 col-md-12 col-12">
                         <div class="about-content section-title default text-left">
                             <div class="section-top">
-                                <h1><span>My Booking</span><b>Appoinment List</b></h1>
+                                <h1><span>My Booking List</span><b>Appoinment List</b></h1>
                             </div>
                             <div class="section-bottom table-responsive">
                                 <table class="table table-sm table-hover">
                                     <thead>
                                         <tr>
                                             <th>Appoinment Number</th>
-                                            <th>Doctor's Name</th>
+                                            <th>Patient's Name</th>
                                             <th>Date</th>
                                             <th>Time</th>
                                             <th>Fees / Charge</th>
@@ -65,7 +67,6 @@
                                                 <td><?= $row['date'] ?></td>
                                                 <td><?php echo $date_start->format('h:i A ') ?> to <?php echo $date_end->format('h:i A ') ?></td>
                                                 <td><?= $row['fees'] ?> Taka</td>
-
                                                 <?php if ($row['status'] == 2) {
                                                 ?>
                                                     <td colspan="2">
@@ -74,15 +75,17 @@
                                                 <?php
                                                 } elseif ($row['status'] == 1) {
                                                 ?>
-                                                    <td>
+                                                    <td colspan="2">
                                                         <p class="text-success">Finish</p>
                                                     </td>
-                                                    <td><a title="My Prescriptions" href="prescription_print.php?appoinment_book_id=<?= $row['appoinment_book_id'] ?>" class="btn btn-sm btn-outline-warning btn-block" href=""><i class="fa fa-print" aria-hidden="true"></i></a></td>
                                                 <?php
                                                 } elseif ($row['status'] == 0) {
                                                 ?>
-                                                    <td colspan="2">
+                                                    <td>
                                                         <p class="text-info">Created</p>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-sm btn-outline-success btn-block" href="prescription.php?appoinment_book_id=<?= $row['appoinment_book_id'] ?>"> Start Process</a>
                                                     </td>
                                                 <?php
                                                 }

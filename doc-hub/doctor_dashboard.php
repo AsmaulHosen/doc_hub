@@ -536,7 +536,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
         <!-- Footer script -->
         <?php include_once 'includes/footer_script.php'; ?>
         <!--/End Footer -->
-
+    </div>
 </body>
 
 </html>

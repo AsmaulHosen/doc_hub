@@ -40,6 +40,7 @@ session_start();
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
 
 	<script type="text/javascript" src="myfunction.js"></script>
+	
 	<!-- Bizwheel Colors -->
 	<!--<link rel="stylesheet" href="css/skins/skin-1.css">
 		<!--<link rel="stylesheet" href="css/skins/skin-2.css">-->
