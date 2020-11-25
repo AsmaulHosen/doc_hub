@@ -87,7 +87,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <!-- Single Service -->
                                         <div class="contact-form-area">
-                                            <form action="patient/updateProfile.php" method="post" role="form" style="display: block;">
+                                            <form action="patient/updateProfile.php" method="post" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <input type="hidden" value="<?php echo $user_id; ?>" name="user_id">
                                                     <input type="hidden" value="<?php echo $patient_id; ?>" name="patient_id">
@@ -228,6 +228,12 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                                         <div class="form-group textarea">
                                                             <span>Permanent Address</span>
                                                             <textarea type="textarea" name="perrmanent_address" rows="3"><?php echo $perrmanent_address; ?></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group textarea">
+                                                            <span>Image</span>
+                                                            <input type="file" name="image">
                                                         </div>
                                                     </div>
                                                     <div class="col-12">

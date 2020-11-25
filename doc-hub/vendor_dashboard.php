@@ -77,7 +77,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                     <div class="col-lg-12 col-md-12 col-12">
                                         <!-- Single Service -->
                                         <div class="contact-form-area">
-                                            <form action="vendor/updateProfile.php" method="post" role="form" style="display: block;">
+                                            <form action="vendor/updateProfile.php" method="post" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <input type="hidden" value="<?php echo $user_id; ?>" name="user_id">
                                                     <input type="hidden" value="<?php echo $vendor_id; ?>" name="vendor_id">
@@ -109,6 +109,12 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                                         <div class="form-group">
                                                             <span>Address </span>
                                                             <input type="text" name="address" value="<?php echo $address; ?>" placeholder="Please Type Vendor Address" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group textarea">
+                                                            <span>Image</span>
+                                                            <input type="file" name="image">
                                                         </div>
                                                     </div>
 

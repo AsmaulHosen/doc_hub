@@ -120,7 +120,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                                                     <div class="col-12">
                                                         <div class="form-group textarea">
                                                             <span>Image</span>
-                                                            <input type="file" name="image" required>
+                                                            <input type="file" name="image" >
                                                         </div>
                                                     </div>
                                                     <div class="col-12">

@@ -79,7 +79,7 @@ if ($_POST) {
                 }
                 if (
                     $imageFileType != "JPG" && $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                    && $imageFileType != "gif"
+                    && $imageFileType != "gif" && $imageFileType != "PNG" && $imageFileType != "JPEG"
                 ) {
                     $uploadOk = 0;
                 }
@@ -94,12 +94,7 @@ if ($_POST) {
                 $sql_img = "UPDATE doctors_deatils SET image='$image' WHERE doctors_id =$doctors_id ";
                 $con->query($sql_img);
                 // echo $sql_img;exit;
-            } else {
-                $image = $_POST['image'];
             }
-
-
-            
         // } 
 
         $sql2 = "UPDATE doctors_deatils SET contact_number='$contact_number',gender='$gender',about='$about' WHERE doctors_id =$doctors_id ";
