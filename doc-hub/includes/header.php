@@ -3,15 +3,38 @@
 	<div class="topbar">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-8 col-12">
+				<div class="col-lg-8 col-md-8 col-12">
 					<!-- Top Contact -->
 					<div class="top-contact">
 						<div class="single-contact"><i class="fa fa-envelope-open"></i>Email: info@rizouan.com</div>
-						<div class="single-contact"><i class="fa fa-clock-o"></i>Opening: Sat - Fri Open 24 hours</div>
+						<div class="single-contact"><i class="fa fa-clock-o"></i>Open 24 hours</div>
+						<?php
+						if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+							if ($_SESSION['user_role'] == 1) {
+						?>
+								<div class="single-contact"><i class="fa fa-user"></i>You are Login as A Patient</div>
+						<?php }
+						} ?>
+						<?php
+						if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+							if ($_SESSION['user_role'] == 2) {
+						?>
+								<div class="single-contact"><i class="fa fa-user-md"></i>You are Login as A Doctor</div>
+						<?php }
+						} ?>
+						<?php
+						if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+							if ($_SESSION['user_role'] == 3) {
+						?>
+								<div class="single-contact"><i class="fa fa-hospital-o"></i>You are Login as A Vendor</div>
+						<?php }
+						} ?>
+
+
 					</div>
 					<!-- End Top Contact -->
 				</div>
-				<div class="col-lg-4 col-12">
+				<div class="col-lg-4 col-md-8 col-12">
 					<div class="topbar-right">
 						<!-- Social Icons -->
 						<ul class="social-icons">
@@ -72,7 +95,13 @@
 																<li><a href="my_appoinment_list.php">My List</a></li>
 														<?php }
 														} ?>
-														
+														<?php
+														if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+															if ($_SESSION['user_role'] == 3) {
+														?>
+																<li><a href="patient_list.php">My List</a></li>
+														<?php }
+														} ?>
 														<!-- <li><a href="about.php">About Us</a></li>
 														<li><a href="contact.php">Contact Us</a></li> -->
 

@@ -1,3 +1,4 @@
+
 function MyEmailWarningFn() {
     swal({
         title: "Email is not available! Please try with another email.",

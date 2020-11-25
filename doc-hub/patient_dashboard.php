@@ -7,6 +7,7 @@
 if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
     header("Location: index.php");
 }
+if ($_SESSION['user_role'] == 1) {
 ?>
 
 <body id="bg">
@@ -59,7 +60,7 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
                             <div class="post-thumb">
                                 <?php if ($image) {
                                 ?>
-                                    <a href="#"><img src="img/doctors/<?php echo $image; ?>" alt="#"></a><br>
+                                    <a href="#"><img src="img/patient/<?php echo $image; ?>" alt="#"></a><br>
                                 <?php
                                 } else {
                                 ?>
@@ -339,5 +340,8 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
         <!--/End Footer -->
 
 </body>
+<?php } else {
+    header("Location: index.php");
+} ?>
 
 </html>
