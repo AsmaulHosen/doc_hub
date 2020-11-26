@@ -100,6 +100,8 @@
 															if ($_SESSION['user_role'] == 3) {
 														?>
 																<li><a href="patient_list.php">My List</a></li>
+																<li><a href="my_store.php">My Store</a></li>
+																
 														<?php }
 														} ?>
 														<!-- <li><a href="about.php">About Us</a></li>

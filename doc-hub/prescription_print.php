@@ -30,13 +30,13 @@ if (!isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] == false) {
             width: 100%;
             line-height: inherit;
             text-align: left;
-            
+
         }
 
         .invoice-box table td {
             padding: 5px;
             vertical-align: top;
-            
+
         }
 
         .invoice-box table tr td:nth-child(2) {
@@ -186,7 +186,18 @@ $date_end = new DateTime($row['end_time']);
                             </td>
 
                             <td>
-                                <strong>Your Information</strong>
+                                <?php
+                                if ($_SESSION['user_role'] == 1) {
+                                ?>
+                                    <strong>Your Information</strong>
+                                <?php
+                                } else {
+                                ?>
+                                    <strong>Patient Information</strong>
+                                <?php
+                                }
+                                ?>
+
                                 <hr>
                                 <?php echo $patient_first_name; ?> <?php echo $patient_last_name; ?><br>
                                 <?php echo $patient_contact_no; ?><br>

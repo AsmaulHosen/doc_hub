@@ -26,7 +26,7 @@
                     <?php
                     include_once 'database/dbCon.php';
                     $con = connect();
-                    $sql = "SELECT * FROM `vendor_details` limit 4";
+                    $sql = "SELECT * FROM `vendor_details` ";
                     $result = $con->query($sql);
                     foreach ($result as $row) {
                     ?>

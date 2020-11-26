@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2020 at 06:10 PM
+-- Generation Time: Nov 26, 2020 at 01:31 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -45,10 +45,10 @@ CREATE TABLE `appointment_book` (
 --
 
 INSERT INTO `appointment_book` (`appoinment_book_id`, `patient_id`, `doctors_id`, `date`, `start_time`, `end_time`, `fees`, `payment_method`, `paymeny_desc`, `status`) VALUES
+('DoH-A-2144', 1, 1, '2020-11-26', '10:20:00', '10:40:00', 300.00, 0, 'nbbb', 0),
 ('DoH-A-6142', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 0, 'bdf', 1),
 ('DoH-A-7601', 1, 1, '2020-11-30', '10:20:00', '10:40:00', 300.00, 3, 'ghf', 0),
-('DoH-A-8368', 1, 1, '2020-11-26', '10:20:00', '10:40:00', 300.00, 1, 'qsdd', 0),
-('DoH-A-9351', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 1, '24wedwe', 0);
+('DoH-A-9351', 1, 1, '2020-11-24', '10:10:00', '10:15:00', 220.00, 1, '24wedwe', 1);
 
 -- --------------------------------------------------------
 
@@ -93,7 +93,7 @@ CREATE TABLE `doctors_deatils` (
 --
 
 INSERT INTO `doctors_deatils` (`doctors_id`, `user_id`, `contact_number`, `gender`, `image`, `about`) VALUES
-(1, 1, '01716514131', 1, '1.jpg', 'Efficiently myocardinate market-driven innovation via open-source alignments. Dramatically engage high-Phosfluorescently expedite impactful supply chains via focused results. Holistically . '),
+(1, 1, '01716514131', 1, '20201125110000_WhatsApp Image 2020-09-10 at 11.40.06 PM.jpeg', 'Efficiently myocardinate market-driven innovation via open-source alignments. Dramatically engage high-Phosfluorescently expedite impactful supply chains via focused results. Holistically . '),
 (2, 2, '01918181712', 2, '2.jpg', 'Dramatically engage high-Phosfluorescently expedite impactful supply chains via focused results. Holistically . Compellingly supply just in time catalysts for change through.'),
 (3, 3, '0191818171', 1, '3.jpg', 'via open-source alignments. Dramatically engage high-Phosfluorescently expedite impactful supply chains via fo'),
 (8, 8, '0309234923', 1, '8.jpg', 'high-Phosfluorescently expedite impactful supply chains via focused results. Holistically . Compellingly supply just in time'),
@@ -169,6 +169,33 @@ INSERT INTO `medical_report_history` (`medical_report_id`, `patient_id`, `medica
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `medicine_details`
+--
+
+CREATE TABLE `medicine_details` (
+  `medicine_id` int(11) NOT NULL,
+  `medicine_name` varchar(200) NOT NULL,
+  `categories_medication` int(11) NOT NULL COMMENT '0=General Sales,1=Pharmacy Medicines,2=Prescription Only Medicines,3=Controlled Drugs',
+  `categories_drug` int(11) NOT NULL COMMENT '0=CNS depressants,1=CNS Stimulants,2=Hallucinogens,3=Dissociative Anesthetics,4=Narcotic Analgesics ,5=Inhalants,6=Cannabis',
+  `type` int(11) NOT NULL COMMENT '0=Liquid,1=Powder,2=Tablet',
+  `unit_price` int(11) NOT NULL,
+  `sell_price` int(11) NOT NULL,
+  `age` int(11) NOT NULL COMMENT '0=Below 10 Years,1=10 to 15 Years,2=15 to 20 Years,3=20 to 35 Years,4=Over 35 years',
+  `qty` int(11) NOT NULL,
+  `vendor_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `medicine_details`
+--
+
+INSERT INTO `medicine_details` (`medicine_id`, `medicine_name`, `categories_medication`, `categories_drug`, `type`, `unit_price`, `sell_price`, `age`, `qty`, `vendor_id`) VALUES
+(1, 'test ok', 3, 2, 1, 200, 300, 1, 243, 1),
+(2, 'ok now 222', 2, 4, 2, 120, 203, 4, 205, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patient_details`
 --
 
@@ -196,7 +223,7 @@ CREATE TABLE `patient_details` (
 --
 
 INSERT INTO `patient_details` (`patient_id`, `user_id`, `gender`, `contact_number`, `date_of_birth`, `wrok_desc`, `religion`, `height`, `weight`, `blood_grp`, `high_pressure`, `blood_sugar`, `image`, `about`, `present_address`, `perrmanent_address`) VALUES
-(1, 646694, 1, '01928282828', '1996-11-09', 'Hello Testing ', 3, 2, 1, 5, 3, 1, NULL, 'oko onadkcnsakcsa', 'dcdcnd cjkdwcjkd ljklkcd', 'sacscdsbnc ncnwdc ');
+(1, 646694, 1, '01928282828', '1996-11-09', 'Hello Testing ', 3, 2, 1, 5, 3, 1, '20201125184807_about_us_img2.jpg', 'oko onadkcnsakcsa', 'dcdcnd cjkdwcjkd ljklkcd', 'sacscdsbnc ncnwdc ');
 
 -- --------------------------------------------------------
 
@@ -221,7 +248,8 @@ CREATE TABLE `prescription_details` (
 --
 
 INSERT INTO `prescription_details` (`prescription_id`, `patient_id`, `doctors_id`, `appoinment_book_id`, `start_time`, `end_time`, `date`, `prescription_desc`, `special_note`) VALUES
-(4, 1, 1, 'DoH-A-6142', '10:10:00', '10:15:00', '2020-11-24', '&lt;h1&gt;this is teting&lt;span style=&quot;font-family: &amp;quot;Impact&amp;quot;;&quot;&gt;﻿&lt;/span&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;final test&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;', '');
+(4, 1, 1, 'DoH-A-6142', '10:10:00', '10:15:00', '2020-11-24', '&lt;h1&gt;this is teting&lt;span style=&quot;font-family: &amp;quot;Impact&amp;quot;;&quot;&gt;﻿&lt;/span&gt;&lt;/h1&gt;&lt;ul&gt;&lt;li&gt;final test&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;', ''),
+(5, 1, 1, 'DoH-A-9351', '10:10:00', '10:15:00', '2020-11-24', '&lt;p&gt;ok ok&lt;br&gt;&lt;/p&gt;', '');
 
 -- --------------------------------------------------------
 
@@ -264,13 +292,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `user_role`, `email`, `password`, `status`, `created_at`) VALUES
-(1, 'hello 12', 'docwww', 2, 'test@gmail.com', '123456', 1, '2020-11-17'),
-(2, 'hello', 'doc', 2, 'doc@gmail.com', '123456', 1, '2020-11-17'),
-(3, 'wsws', 'sees', 2, 'ok@gmail.com', '123456', 1, '2020-11-17'),
-(8, 'test 1', 'testing', 2, 'test1@gmail.com', '123456', 1, '2020-11-18'),
-(239450, 'hello', 'ok', 2, 'hello@gmail.com', '098098', 1, '2020-11-19'),
-(326285, 'hello', 'vendor test', 3, 'ven@gmail.com', '123456', 1, '2020-11-21'),
-(646694, 'Rohim', 'Uddin', 1, 'rohim@gmail.com', '09870987', 1, '2020-11-20');
+(1, 'Afjal', 'Hossain', 2, 'doctor1@gmail.com', '123456', 1, '2020-11-17'),
+(2, 'Nazrana', 'Begum', 2, 'doctor2@gmail.com', '123456', 1, '2020-11-17'),
+(3, 'Kabir', 'Haque', 2, 'doctor3@gmail.com', '123456', 1, '2020-11-17'),
+(8, 'Mahmudul ', 'Hasan', 2, 'doctor4@gmail.com', '123456', 1, '2020-11-18'),
+(239450, 'Newaj', 'sorif', 2, 'doctor5@gmail.com', '123456', 1, '2020-11-19'),
+(326285, 'Wahid', 'Abbas', 3, 'vendor1@gmail.com', '123456', 1, '2020-11-21'),
+(646694, 'Rohim', 'Uddin', 1, 'patient1@gmail.com', '123456', 1, '2020-11-20');
 
 -- --------------------------------------------------------
 
@@ -292,7 +320,7 @@ CREATE TABLE `vendor_details` (
 --
 
 INSERT INTO `vendor_details` (`vendor_id`, `user_id`, `vendor_name`, `address`, `phone_no`, `image`) VALUES
-(1, 326285, 'venor 1st', 'ok ok ', '01717171717', '');
+(1, 326285, 'Speed Pharmacy', 'ok ok 1', '01717171717', '20201125111019_about_us_img4.jpg');
 
 --
 -- Indexes for dumped tables
@@ -340,6 +368,13 @@ ALTER TABLE `experienced`
 ALTER TABLE `medical_report_history`
   ADD PRIMARY KEY (`medical_report_id`),
   ADD KEY `patient_id` (`patient_id`);
+
+--
+-- Indexes for table `medicine_details`
+--
+ALTER TABLE `medicine_details`
+  ADD PRIMARY KEY (`medicine_id`),
+  ADD KEY `vendor_id` (`vendor_id`);
 
 --
 -- Indexes for table `patient_details`
@@ -412,6 +447,12 @@ ALTER TABLE `medical_report_history`
   MODIFY `medical_report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `medicine_details`
+--
+ALTER TABLE `medicine_details`
+  MODIFY `medicine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `patient_details`
 --
 ALTER TABLE `patient_details`
@@ -421,7 +462,7 @@ ALTER TABLE `patient_details`
 -- AUTO_INCREMENT for table `prescription_details`
 --
 ALTER TABLE `prescription_details`
-  MODIFY `prescription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `prescription_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `speciality`
@@ -475,6 +516,12 @@ ALTER TABLE `experienced`
 --
 ALTER TABLE `medical_report_history`
   ADD CONSTRAINT `medical_report_history_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patient_details` (`patient_id`);
+
+--
+-- Constraints for table `medicine_details`
+--
+ALTER TABLE `medicine_details`
+  ADD CONSTRAINT `medicine_details_ibfk_1` FOREIGN KEY (`vendor_id`) REFERENCES `vendor_details` (`vendor_id`);
 
 --
 -- Constraints for table `patient_details`
