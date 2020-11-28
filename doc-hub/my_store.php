@@ -161,7 +161,7 @@ if ($_SESSION['user_role'] == 3) {
                                                 <th>Quantity</th>
                                                 <th>Total </th>
                                                 <th>Profit <small>(From Selling)</small> </th>
-                                                <th colspan="2">Action</th>
+                                                <th >Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -235,11 +235,12 @@ if ($_SESSION['user_role'] == 3) {
                                                     <td><?= ($row['sell_price'] * $row['qty']) - ($row['unit_price'] * $row['qty']) ?>.00 ৳</td>
                                                     <td>
                                                         <a class="btn btn-sm btn-outline-warning " href="edit_medicine.php?medicine_id=<?= $row['medicine_id'] ?>"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                                    </td>
-                                                    <td>
+                                                   
                                                         <a class="btn btn-sm btn-outline-danger " href="vendor/deletemedicine.php?medicine_id=<?= $row['medicine_id'] ?>"> <i class="fa fa-trash" aria-hidden="true"></i></a>
                                                     </td>
-                                                </tr> <?php } ?> </tbody>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

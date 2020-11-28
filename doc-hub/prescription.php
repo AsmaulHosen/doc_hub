@@ -54,6 +54,11 @@ if ($_SESSION['user_role'] == 2) {
                 $start_time  = $row['start_time'];
                 $end_time  = $row['end_time'];
             }
+            $sql_prescription = "SELECT * FROM prescription_details,doctors_deatils,users 
+            WHERE prescription_details.doctors_id = doctors_deatils.doctors_id 
+            AND doctors_deatils.user_id = users.user_id AND
+            prescription_details.patient_id = $patient_id;";
+            $result_prescription = $con->query($sql_prescription);
             ?>
             <section class="contact-us section-space">
                 <div class="container">
@@ -118,6 +123,20 @@ if ($_SESSION['user_role'] == 2) {
 
                                             ?>
                                         </p>
+                                    </div>
+                                </div>
+                                <div class="single-contact-box">
+                                    <div class="c-icon"><i class="fa fa-files-o"></i></div>
+                                    <div class="c-text">
+                                        <h4>Previous Prescription</h4>
+                                        <hr>
+                                        <?php
+                                        foreach ($result_prescription as $row) {
+                                        ?>
+                                            <a target="_blank" title="View Prescriptions" href="prescription_print.php?appoinment_book_id=<?= $row['appoinment_book_id'] ?>" class="btn btn-sm btn-outline-warning btn-block "><?= $row['first_name'] ?> <?= $row['last_name'] ?> Prescription</a><br>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                                 <!--/ End Single Contact -->
